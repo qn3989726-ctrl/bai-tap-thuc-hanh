@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Campus Connect — cổng thông tin đào tạo & đời sống sinh viên
 
 Website hoàn chỉnh bằng **HTML + CSS + JavaScript thuần** (không framework, không cần build),
@@ -87,3 +88,7 @@ CampussConnect/
   giao diện nhận ngay.
 - Google Fonts (`Be Vietnam Pro`) tải qua CDN — khi mất mạng sẽ fallback hệ font chữ thường.
 
+=======
+# bai-tap-thuc-hanh
+Repository lưu mã nguồn cho bài tập thực hành
+>>>>>>> origin/main
