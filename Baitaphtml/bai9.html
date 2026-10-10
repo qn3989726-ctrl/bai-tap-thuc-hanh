@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ cá nhân - Nguyễn Văn An</title>
+    <style>
+       
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+       
+        .profile-card {
+            background-color: #FFFFFF;
+            width: 900px;
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            overflow: hidden;
+        }
+
+       
+        .left-column {
+            background: linear-gradient(to bottom, #1565C0, #0d3f7a);
+            color: #FFFFFF;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        
+        .avatar {
+            width: 110px;
+            height: 110px;
+            background-color: #FFFFFF;
+            color: #1565C0;
+            border-radius: 50%;
+            font-size: 42px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 10px 0 5px 0;
+        }
+
+        .title {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        /* Thông tin liên hệ */
+        .contact-info {
+            width: 100%;
+            list-style: none;
+            margin: 0;
+            padding-left: 15px;
+            text-align: left;
+            font-size: 13px;
+            line-height: 2.2;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+       
+        .right-column {
+            padding: 40px;
+            color: #333333;
+        }
+
+       
+        .section-title {
+            color: #1565C0;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Định dạng danh sách kỹ năng dạng chip bo tròn */
+        .skills-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            list-style: none;
+            margin: 10px 0 0;
+            padding: 0;
+        }
+
+        .skill-chip {
+            background-color: #e3f0ff;
+            color: #0d3f7a;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        
+        .links-container {
+            font-size: 14px;
+        }
+
+        .links-container a {
+            color: #1565C0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .links-container a:hover {
+            text-decoration: underline;
+        }
+
+        .separator {
+            color: #ccc;
+            margin: 0 8px;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 20px 12px;
+            }
+
+            .profile-card {
+                grid-template-columns: 1fr;
+            }
+
+            .left-column,
+            .right-column {
+                padding: 28px 22px;
+            }
+
+            .title {
+                margin-bottom: 25px;
+            }
+
+            .contact-info {
+                padding-left: 0;
+                text-align: center;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="profile-card">
+        
+        <aside class="left-column">
+            <figure class="avatar" aria-label="Ảnh đại diện">NA</figure>
+            
+            <h1 class="name">Nguyễn Văn An</h1>
+            <p class="title">Sinh viên CNTT · K67</p>
+            
+            <address class="contact-info">
+                <p class="contact-item">✉ an.nv@tlu.edu.vn</p>
+                <p class="contact-item">☎ 0987 654 321</p>
+                <p class="contact-item">⌂ Hà Nội</p>
+                <p class="contact-item">⭥ github.com/annv</p>
+            </address>
+        </aside>
+
+        <section class="right-column">
+            
+            <article class="section">
+                <h2 class="section-title">Giới thiệu</h2>
+                <p>Sinh viên năm 3 ngành Công nghệ thông tin, yêu thích lập trình web và thiết kế giao diện. Đang tìm cơ hội thực tập vị trí Front-end Developer.</p>
+            </article>
+
+            <article class="section">
+                <h2 class="section-title">Kỹ năng</h2>
+                <ul class="skills-container" aria-label="Kỹ năng">
+                    <li class="skill-chip">HTML5</li>
+                    <li class="skill-chip">CSS3</li>
+                    <li class="skill-chip">JavaScript</li>
+                    <li class="skill-chip">Bootstrap</li>
+                    <li class="skill-chip">Git</li>
+                </ul>
+            </article>
+
+            <article class="section">
+                <h2 class="section-title">Học vấn</h2>
+                <p><strong>2023 – nay:</strong> Trường Đại học Thủy lợi (TLU), ngành Công nghệ thông tin.</p>
+            </article>
+
+            <article class="section section-last">
+                <h2 class="section-title">Liên kết</h2>
+                <nav class="links-container" aria-label="Liên kết ngoài">
+                    <a href="#">Portfolio</a><span class="separator">·</span>
+                    <a href="#">Facebook</a><span class="separator">·</span>
+                    <a href="#">LinkedIn</a>
+                </nav>
+            </article>
+
+        </section>
+    </main>
+
+</body>
+</html>

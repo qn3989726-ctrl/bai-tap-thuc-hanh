@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bông điên điển - Món ngon mùa nước nổi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #171717;
+      --orange: #e65100;
+      --green: #2e7d32;
+      --paper: #fffdf8;
+      --mint: #f4fbf4;
+      --space: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 8px 10px 22px;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--paper), #fffaf0);
+      font: 15px/1.65 'Noto Serif', Georgia, 'Times New Roman', serif;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr);
+      gap: var(--space);
+      align-items: start;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--orange);
+      font-size: 30px;
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      margin: 0 0 8px;
+      color: var(--orange);
+      font-size: 17px;
+      line-height: 1.4;
+    }
+
+    .story p {
+      margin: 0 0 12px;
+    }
+
+    .story p:first-child::first-letter {
+      float: left;
+      margin-right: 7px;
+      color: var(--orange);
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 0.95;
+    }
+
+    .flower {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 7;
+      border-radius: 3px;
+      object-fit: cover;
+      transition: filter 220ms ease-out, transform 220ms ease-out;
+    }
+
+    .flavors {
+      margin-top: 16px;
+      padding: 10px 17px 12px;
+      border: 2px solid var(--green);
+      border-radius: 7px;
+      background: var(--mint);
+      transition: box-shadow 220ms ease-out, background-color 220ms ease-out;
+    }
+
+    .flavors h2 {
+      margin: 0 0 3px;
+      color: var(--green);
+      font-size: 17px;
+      font-style: italic;
+    }
+
+    .flavors ul {
+      margin: 0;
+      padding-left: 18px;
+      columns: 2;
+      column-gap: 34px;
+      list-style-image: url("../assets/images/icon_list_c.gif");
+    }
+
+    .flavors li {
+      break-inside: avoid;
+      padding-left: 1px;
+    }
+
+    .flower:hover {
+      filter: saturate(1.08);
+      transform: scale(1.015);
+    }
+
+    .flavors:hover {
+      background-color: #f0f8ef;
+      box-shadow: 0 5px 16px rgb(46 125 50 / 12%);
+    }
+
+    @media (max-width: 560px) {
+      body { padding: 12px 14px 20px; }
+      .story { grid-template-columns: 1fr; }
+      .flower { width: min(100%, 320px); }
+      .flavors ul { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Bông điên điển</h1>
+      <p class="subtitle">Món ngon mùa nước nổi</p>
+    </header>
+
+    <section class="story" aria-label="Giới thiệu bông điên điển">
+      <article>
+        <p>Mỗi năm, vào đầu mùa nước nổi, những cây điên điển bên bờ sông, bờ rạch lại xanh tươi trở lại, trổ đầy hoa vàng rực giữa vùng lũ Đồng bằng sông Cửu Long.</p>
+        <p>Trước đây, người dân nghèo dùng bông điên điển nấu cháo cầm cự qua tháng ngày khó khăn. Ngày nay, bông điên điển trở thành món ngon: làm dưa chua ăn ngâm với giá sống trong nước muối vừa mặn, ba ngày sau là có dĩa dưa chua giòn chấm nước tương ớt.</p>
+      </article>
+      <img class="flower" src="../assets/images/Diendien.jpg" alt="Bông điên điển vàng nở bên bờ sông">
+    </section>
+
+    <section class="flavors" aria-labelledby="flavors-title">
+      <h2 id="flavors-title">Hương vị miền Nam</h2>
+      <ul>
+        <li>Bánh tráng Mỹ Lồng</li>
+        <li>Dồi lươn rim nước cốt dừa</li>
+        <li>Bún mắm</li>
+        <li>Bún nước lèo Sóc Trăng</li>
+        <li>Nem lai Vung</li>
+        <li>Cốm dẹp</li>
+        <li>Bưởi Tân Triều</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

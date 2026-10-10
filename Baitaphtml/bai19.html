@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mũi Né – Huyền bí và quyến rũ</title>
+  <style>
+    :root {
+      --sand: #c9a227;
+      --orange: #e07b00;
+      --ink: #171717;
+      --space: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 14px;
+      color: var(--ink);
+      background: #fff;
+      font: 16px/1.7 "Times New Roman", serif;
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) minmax(0, 1.75fr);
+      gap: var(--space);
+      align-items: start;
+    }
+
+    .dunes {
+      margin: 0;
+    }
+
+    .dunes img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 7px;
+      object-fit: cover;
+      box-shadow: 0 8px 18px rgb(0 0 0 / 22%);
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: var(--sand);
+      font-size: 28px;
+      line-height: 1.25;
+      text-shadow: 2px 2px 3px rgb(0 0 0 / 30%);
+    }
+
+    .story {
+      padding: 14px 16px;
+      border: 2px dashed var(--orange);
+      border-radius: 10px;
+    }
+
+    .story p {
+      margin: 0 0 10px;
+      text-align: justify;
+    }
+
+    .story p:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      color: #c62828;
+    }
+
+    @media (max-width: 620px) {
+      .feature {
+        grid-template-columns: 1fr;
+      }
+
+      .dunes img {
+        width: min(100%, 360px);
+        aspect-ratio: 3 / 2;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <article class="feature">
+      <figure class="dunes">
+        <img src="../assets/images/muine.jpg" alt="Đồi cát vàng ở Mũi Né">
+      </figure>
+
+      <section aria-label="Giới thiệu Mũi Né">
+        <h1>Mũi Né – Huyền bí và quyến rũ</h1>
+        <section class="story" aria-label="Thông tin về Phan Thiết và Hòn Rơm">
+          <p>Biển và cát là những gì mà <strong>Phan Thiết</strong> hào hiệp ban tặng cho du khách. Phan Thiết nằm trong vùng nhiệt đới, ít chịu ảnh hưởng gió mùa đông bắc, khí hậu nóng và khô, lượng mưa trung bình chỉ 800–1.150 mm – ít nhất khu vực Nam Bộ.</p>
+          <p>Từ nhiều năm qua, đồi cát Mũi Né là đề tài quen thuộc của các cuộc thi ảnh nghệ thuật, là biểu tượng của vùng đất Bình Thuận. Bờ biển <strong>Hòn Rơm</strong> sạch và đẹp, nước trong xanh, sóng chạy dưới chân những hàng dừa mát rượi.</p>
+        </section>
+      </section>
+    </article>
+  </main>
+</body>
+</html>

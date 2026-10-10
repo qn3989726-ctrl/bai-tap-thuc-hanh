@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 1px 4px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            background: #ffffff;
+        }
+
+        main {
+            width: min(100%, 564px);
+            align-self: flex-start;
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            align-items: center;
+            gap: 22px;
+            border-radius: 20px;
+            background-color: #111827;
+        }
+
+        .calculator_display {
+            color: #4ade80;
+            width: 100%;
+            height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 4px;
+            border-radius: 16px;
+            background: #022c22;
+            padding: 24px 26px;
+            overflow: hidden;
+        }
+        .calculator_display p {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 20px;
+            margin: 0;
+        }
+        .calculator_display h1 {
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .calculator_button {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        
+        .num_button,
+        .operator_button,
+        .clean_button,
+        .result_button
+        {
+            width: 100%;
+            height: 74px;
+            font-size: 24px;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .calculator_button_item {
+            background-color: #25313f;
+            color: #e5e7eb;
+        }
+
+        .num_button {
+            background-color: #25313f;
+            color: #e5e7eb;
+        }
+        .num_button:hover {
+            background-color: #1e293b;
+        }
+        .operator_button {
+            background-color: #0d6efd;
+            color: #ffffff;
+        }
+        .operator_button:hover {
+            background-color: #0b5ed7;
+        }
+        .clean_button {
+            background-color: #dc2626;
+            color: #ffffff;
+        }
+        .clean_button:hover {
+            background-color: #b91c1c;
+        }
+        .result_button {
+            background-color: #16a34a;
+            color: #ffffff;
+        }
+        .result_button:hover {
+            background-color: #15803d;
+        }
+
+        .zero_button {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 380px) {
+            main {
+                padding: 20px;
+            }
+
+            .calculator_button {
+                gap: 10px;
+            }
+
+            .calculator_button_item,
+            .num_button,
+            .operator_button,
+            .clean_button,
+            .result_button {
+                height: 64px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="calculator_display">
+            <p class = "fomular_display" aria-live ="polite"></p>
+            <h1 class = "result_display"></h1>
+        </section>
+        <section class="calculator_button">
+                <button class = "clean_button">C</button>
+                <button class = "operator_button">()</button>
+                <button class = "operator_button">%</button>
+                <button class = "operator_button">÷</button>
+                <button class = "num_button">7</button>
+                <button class = "num_button">8</button>
+                <button class = "num_button">9</button>
+                <button class = "operator_button">×</button>
+                <button class = "num_button">4</button>
+                <button class = "num_button">5</button>
+                <button class = "num_button">6</button>
+                <button class = "operator_button">-</button>
+                <button class = "num_button">1</button>
+                <button class = "num_button">2</button>
+                <button class = "num_button">3</button>
+                <button class = "operator_button">+</button>
+                <button class = "num_button zero_button">0</button>
+                <button class = "num_button">.</button>
+                <button class = "result_button">=</button>
+        </section>
+    </main>
+    <script>
+        const formulaDisplay = document.querySelector('.fomular_display');
+        const resultDisplay = document.querySelector('.result_display');
+        const buttonPanel = document.querySelector('.calculator_button');
+        let formula = '';
+        let hasResult = false;
+
+        function render() {
+            formulaDisplay.textContent = formula;
+        }
+
+        function currentNumber() {
+            return formula.split(/[+\-×÷()]/).pop();
+        }
+
+        function clearResult() {
+            formula = '';
+            resultDisplay.textContent = '';
+            hasResult = false;
+        }
+
+        function evaluate(expression) {
+            const tokens = expression.match(/(?:\d+(?:\.\d*)?|\.\d+)|[()+\-×÷%]/g) || [];
+            if (tokens.join('') !== expression) throw new Error('Invalid expression');
+
+            let position = 0;
+            const parsePrimary = () => {
+                let value;
+                if (tokens[position] === '(') {
+                    position++;
+                    value = parseExpression();
+                    if (tokens[position++] !== ')') throw new Error('Unclosed parenthesis');
+                } else {
+                    const token = tokens[position++];
+                    if (!token || !/^(?:\d+\.?\d*|\.\d+)$/.test(token)) {
+                        throw new Error('Expected a number');
+                    }
+                    value = Number(token);
+                }
+                while (tokens[position] === '%') {
+                    position++;
+                    value /= 100;
+                }
+                return value;
+            };
+
+            const parseTerm = () => {
+                let value = parsePrimary();
+                while (tokens[position] === '×' || tokens[position] === '÷') {
+                    const operator = tokens[position++];
+                    const right = parsePrimary();
+                    if (operator === '÷' && right === 0) throw new Error('Division by zero');
+                    value = operator === '×' ? value * right : value / right;
+                }
+                return value;
+            };
+
+            const parseExpression = () => {
+                let value = parseTerm();
+                while (tokens[position] === '+' || tokens[position] === '-') {
+                    const operator = tokens[position++];
+                    const right = parseTerm();
+                    value = operator === '+' ? value + right : value - right;
+                }
+                return value;
+            };
+
+            const value = parseExpression();
+            if (position !== tokens.length || !Number.isFinite(value)) {
+                throw new Error('Invalid expression');
+            }
+            return Number.parseFloat(value.toPrecision(12)).toString();
+        }
+
+        buttonPanel.addEventListener('click', event => {
+            const button = event.target.closest('button');
+            if (!button) return;
+
+            const value = button.textContent;
+            if (value === 'C') {
+                clearResult();
+            } else if (value === '=') {
+                if (!formula || /[+\-×÷(]$/.test(formula)) return;
+                try {
+                    resultDisplay.textContent = evaluate(formula);
+                    hasResult = true;
+                } catch {
+                    return;
+                }
+                return;
+            } else if (/^\d$/.test(value)) {
+                if (hasResult) clearResult();
+                const number = currentNumber();
+                if (value === '0' && (!number || number === '0')) {
+                    if (!number) formula += value;
+                } else if (number === '0') {
+                    formula = formula.slice(0, -1) + value;
+                } else {
+                    formula += value;
+                }
+            } else if (value === '.') {
+                if (hasResult) clearResult();
+                const number = currentNumber();
+                if (!number.includes('.')) formula += number ? '.' : '0.';
+            } else if (['+', '-', '×', '÷'].includes(value)) {
+                if (hasResult) {
+                    formula = resultDisplay.textContent;
+                    hasResult = false;
+                }
+                if (/[\d)]$/.test(formula)) {
+                    formula += value;
+                    resultDisplay.textContent = '';
+                }
+            } else if (value === '%') {
+                if (/[\d)]$/.test(formula)) {
+                    formula += value;
+                    resultDisplay.textContent = '';
+                    hasResult = false;
+                }
+            } else if (value === '()') {
+                if (hasResult) clearResult();
+                const opens = (formula.match(/\(/g) || []).length;
+                const closes = (formula.match(/\)/g) || []).length;
+                if (!formula || /[+\-×÷(]$/.test(formula)) {
+                    formula += '(';
+                } else if (opens > closes && /[\d)]%?$/.test(formula)) {
+                    formula += ')';
+                }
+            }
+
+            render();
+        });
+    </script>
+</body>
+</html>

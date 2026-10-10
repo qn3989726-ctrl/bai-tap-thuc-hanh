@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đồng hồ và lời chào</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            background: #f1f1f1;
+        }
+
+        main {
+            width: min(100%, 1000px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 68px;
+        }
+
+        .clock_display {
+            width: 100%;
+            min-height: 246px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            background: #000;
+            padding: 32px 20px;
+        }
+
+        .hour_display,
+        .minute_display,
+        .second_display {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hour_display,
+        .minute_display {
+            margin-right: 12px;
+        }
+
+        .clock_display img {
+            display: block;
+            width: auto;
+            height: 52px;
+        }
+
+        .greeting_display {
+            width: 88%;
+            min-height: 140px;
+            display: grid;
+            place-items: center;
+            border-radius: 22px;
+            background: #fff;
+            padding: 20px;
+        }
+
+        .greeting {
+            margin: 0;
+            color: #c62828;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 72px;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        @media (max-width: 700px) {
+            main {
+                gap: 48px;
+            }
+
+            .clock_display {
+                min-height: 190px;
+                padding: 24px 12px;
+            }
+
+            .clock_display img {
+                height: 40px;
+            }
+
+            .hour_display,
+            .minute_display,
+            .second_display {
+                gap: 6px;
+            }
+
+            .hour_display,
+            .minute_display {
+                margin-right: 6px;
+            }
+
+            .greeting_display {
+                width: 92%;
+                min-height: 112px;
+                padding: 16px;
+            }
+
+            .greeting {
+                font-size: 48px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            body {
+                padding: 10px;
+            }
+
+            .clock_display img {
+                height: 32px;
+            }
+
+            .clock_display {
+                padding: 20px 8px;
+            }
+
+            .greeting {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="clock_display">
+            <section class="hour_display">
+                <img id="hour-tens" aria-live="polite" src="../assets/images/00.gif" alt="Hình ảnh giờ hàng chục">
+                <img id="hour-ones" aria-live="polite" src="../assets/images/00.gif" alt="Hình ảnh giờ đơn vị">
+                <img src="../assets/images/haicham.gif" alt="ảnh hai chấm">
+            </section>
+            
+            <section class="minute_display">
+                <img id="minute-tens" aria-live="polite" src="../assets/images/00.gif" alt="Hình ảnh phút hàng chục">
+                <img id="minute-ones" aria-live="polite" src="../assets/images/00.gif" alt="Hình ảnh phút đơn vị">
+                <img src="../assets/images/haicham.gif" alt="ảnh hai chấm">
+            </section>
+            
+            <section class="second_display">
+                <img id="second-tens" aria-live="polite" src="../assets/images/00.gif" alt="Hình ảnh giây hàng chục">
+                <img id="second-ones" aria-live="polite" src="../assets/images/00.gif" alt="Hình ảnh giây đơn vị">
+            </section>
+        </section>
+        <section class="greeting_display">
+            <h1 class="greeting" id="greeting" aria-live="polite">Chào buổi sáng</h1>
+        </section>
+    </main>
+
+    <script>
+        const hourTensImg = document.getElementById("hour-tens");
+        const hourOnesImg = document.getElementById("hour-ones");
+        const minuteTensImg = document.getElementById("minute-tens");
+        const minuteOnesImg = document.getElementById("minute-ones");
+        const secondTensImg = document.getElementById("second-tens");
+        const secondOnesImg = document.getElementById("second-ones");
+
+        function Clock_Update()
+        {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            
+            numberToImage(hours, hourTensImg, hourOnesImg);
+            numberToImage(minutes, minuteTensImg, minuteOnesImg);
+            numberToImage(seconds, secondTensImg, secondOnesImg);
+            updateGreeting(hours);
+        }
+
+        function numberToImage(value, tensImg, onesImg) {
+            const strValue = value.toString().padStart(2, "0");
+            const tensDigit = strValue[0];
+            const onesDigit = strValue[1];
+            tensImg.src = `../assets/images/0${tensDigit}.gif`;
+            onesImg.src = `../assets/images/0${onesDigit}.gif`;
+        }
+
+        function updateGreeting(hour)
+        {
+            let greetingText = "Chào buổi tối!";
+            if (hour >= 5 && hour < 11) {
+                greetingText = "Chào buổi sáng!";
+            } else if (hour >= 11 && hour < 13) {
+                greetingText = "Chào buổi trưa!";
+            } else if (hour >= 13 && hour < 18) {
+                greetingText = "Chào buổi chiều!";
+            }
+            document.getElementById("greeting").textContent = greetingText;
+        }
+
+        Clock_Update();
+        setInterval(Clock_Update, 1000);
+    </script>
+</body>
+</html>

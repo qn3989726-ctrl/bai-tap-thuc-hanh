@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Công ty Hoa tươi Nhân Ái</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #000000;
+        }
+
+        header h1 {
+            color: #C2185B;
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .main-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-img {
+            flex: 0 0 auto;
+        }
+
+        .sidebar-img img {
+            display: block;
+            max-width: 200px;
+            height: auto;
+        }
+
+        .info-article {
+            flex: 1;
+        }
+
+        .section-title {
+            background-color: #FFC0CB;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 5px 10px;
+            display: inline-flex;
+            margin: 0 0 10px 0;
+        }
+
+        .list-intro {
+            list-style-type: square;
+            margin: 0 0 20px 0;
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        .list-contact {
+            list-style-type: circle;
+            margin: 0;
+            padding-left: 20px;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #0000EE;
+            text-decoration: underline;
+            font-size: 14px;
+        }
+        
+       
+        @media screen and (max-width: 600px) {
+            .main-content {
+                flex-direction: column;
+                align-items: center; /* Căn giữa ảnh và chữ */
+                gap: 20px;
+            }
+
+        
+            .sidebar-img {
+                text-align: center;
+            }
+
+            
+            header h1 {
+                font-size: 20px;
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+
+    <main>
+        
+        <header>
+            <h1>
+                Công ty Hoa tươi Nhân Ái
+            </h1>
+        </header>
+
+        <section class="main-content">
+            
+            <aside class="sidebar-img">
+                <img src="../assets/images/Rose.gif" alt="Hoa hồng">
+            </aside>
+
+            <article class="info-article">
+                
+                <section>
+                    <h2 class="section-title">
+                        1. Giới thiệu
+                    </h2>
+                    
+                    <ul class="list-intro">
+                        <li>Thành lập ngày 25/05/2007</li>
+                        <li>Chuyên cung cấp các loại hoa tươi</li>
+                        <li>Có trên 20 cửa hàng bán lẻ tại TP.HCM</li>
+                        <li>Nhận kết giỏ hoa theo yêu cầu của khách hàng</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 class="section-title">
+                        2. Liên hệ
+                    </h2>
+                    
+                    <ul class="list-contact">
+                        <li>Điện thoại: 84-08-8351056</li>
+                        <li>Địa chỉ: 227 Nguyễn Văn Cừ, Quận 5, TP.HCM</li>
+                    </ul>
+                </section>
+
+            </article>
+        </section>
+
+        <footer>
+            <a href="#">&copy; Copyright: Công ty Hoa tươi Nhân Ái</a>
+        </footer>
+        
+    </main>
+
+</body>
+</html>

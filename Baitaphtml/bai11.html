@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 11 - Thư viện ảnh Việt Nam</title>
+    <style>
+       
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin: 0 0 8px 0;
+            color: #e2e8f0;
+        }
+
+        .header p {
+            font-size: 15px;
+            color: #cbd5e1;
+            margin: 0;
+            opacity: 0.8;
+        }
+
+       
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        
+        .gallery-grid figure {
+            background-color: #1e293b;
+            margin: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        
+        .gallery-grid figcaption {
+            color: #cbd5e1;
+            font-size: 13px;
+            padding: 12px 16px;
+        }
+
+      
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Thư viện ảnh Việt Nam</h1>
+        <p>Bộ sưu tập 6 danh thắng tiêu biểu — minh hoạ thẻ figure / figcaption.</p>
+    </header>
+
+    <main class="gallery-grid">
+        
+        <figure>
+            <img src="../assets/images/1-vinh-ha-long.jpg" alt="Vịnh Hạ Long">
+            <figcaption>Hình 1. Vịnh Hạ Long</figcaption>
+        </figure>
+
+        <figure>
+            <img src="../assets/images/2-son-doong.jpg" alt="Hang Sơn Đoòng">
+            <figcaption>Hình 2. Hang Sơn Đoòng</figcaption>
+        </figure>
+
+        <figure>
+            <img src="../assets/images/3-thac-ban-gioc.jpg" alt="Thác Bản Giốc">
+            <figcaption>Hình 3. Thác Bản Giốc</figcaption>
+        </figure>
+
+        <figure>
+            <img src="../assets/images/4-fansipan.jpg" alt="Fansipan">
+            <figcaption>Hình 4. Fansipan</figcaption>
+        </figure>
+
+        <figure>
+            <img src="../assets/images/5-mekong.jpg" alt="Đồng bằng sông Cửu Long">
+            <figcaption>Hình 5. Đồng bằng sông Cửu Long</figcaption>
+        </figure>
+
+        <figure>
+            <img src="../assets/images/6-phong-nha.jpg" alt="Động Phong Nha">
+            <figcaption>Hình 6. Động Phong Nha</figcaption>
+        </figure>
+
+    </main>
+
+</body>
+</html>

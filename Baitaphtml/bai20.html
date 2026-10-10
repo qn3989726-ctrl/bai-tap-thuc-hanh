@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hoa hồng - Special For You</title>
+	<style>
+		* { box-sizing: border-box; }
+		body {
+			min-height: 100vh; margin: 0; padding: 36px 20px; display: grid;
+			place-items: center; background: #101417; color: #eee; font-family: Arial, sans-serif;
+		}
+		main { width: min(100%, 1100px); text-align: center; }
+		.frame {
+			position: relative; width: min(100%, 700px); height: 170px; margin: 0 auto 36px;
+			display: grid; place-items: end center; padding: 0 18px 20px;
+			background: #1c2226; border-radius: 12px;
+		}
+		.frame img {
+			position: absolute; top: 16px; left: 26px; width: 105px; height: 130px;
+			object-fit: contain; transition: .25s;
+		}
+		h1 {
+			margin: 0; color: #eac447; font-size: 42px; font-style: italic;
+			background: linear-gradient(90deg, #c99d22, #fff0a8, #c99d22);
+			background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+		}
+		.buttons {
+			max-width: 900px; margin: auto; display: flex; flex-wrap: wrap;
+			justify-content: center; gap: 10px;
+		}
+		button {
+			padding: 11px 20px; border: 2px solid #374248; border-radius: 12px;
+			background: #232b30; color: #eee; font: inherit; font-size: 18px; cursor: pointer;
+		}
+		button.active { border-color: #0d6efd; background: #0d6efd; }
+		.gray { filter: grayscale(1); }
+		.xray { filter: grayscale(1) invert(1); }
+		.invert { filter: invert(1); }
+		.fliph { transform: scaleX(-1); }
+		.flipv { transform: scaleY(-1); }
+		.glow { filter: drop-shadow(0 0 12px #ffd54f); }
+		.shadow { filter: drop-shadow(4px 5px 4px #000); }
+		.bold-shadow { filter: drop-shadow(7px 8px 0 #000); }
+		.dropshadow { filter: drop-shadow(0 10px 10px #000); }
+		.blur { filter: blur(3px); }
+		.wave { filter: url(#wave); }
+		.mask { mask-image: linear-gradient(to bottom, #000 55%, transparent); }
+		.alpha { opacity: .4; }
+		@media (max-width: 500px) {
+			body { padding: 24px 12px; }
+			.frame img { top: 10px; left: 14px; width: 62px; height: 85px; }
+			h1 { font-size: 30px; }
+			button { padding: 10px 14px; }
+		}
+	</style>
+</head>
+<body>
+	<svg width="0" height="0" aria-hidden="true">
+		<filter id="wave" x="-10%" y="-10%" width="120%" height="120%">
+			<feTurbulence baseFrequency=".04" numOctaves="2" seed="3"></feTurbulence>
+			<feDisplacementMap in="SourceGraphic" scale="8"></feDisplacementMap>
+		</filter>
+	</svg>
+	<main>
+		<section class="frame">
+			<img id="rose" class="gray" src="../assets/images/hoahong.gif" alt="Hoa hồng">
+			<h1>Special For You</h1>
+		</section>
+		<div class="buttons" aria-label="Chọn hiệu ứng cho ảnh">
+			<button class="active" data-effect="gray" aria-pressed="true">Gray</button>
+			<button data-effect="xray" aria-pressed="false">Xray</button>
+			<button data-effect="invert" aria-pressed="false">Invert</button>
+			<button data-effect="fliph" aria-pressed="false">FlipH</button>
+			<button data-effect="flipv" aria-pressed="false">FlipV</button>
+			<button data-effect="glow" aria-pressed="false">Glow</button>
+			<button data-effect="shadow" aria-pressed="false">Shadow</button>
+			<button data-effect="bold-shadow" aria-pressed="false">Bold Shadow</button>
+			<button data-effect="dropshadow" aria-pressed="false">DropShadow</button>
+			<button data-effect="blur" aria-pressed="false">Blur</button>
+			<button data-effect="wave" aria-pressed="false">Wave</button>
+			<button data-effect="mask" aria-pressed="false">Mask</button>
+			<button data-effect="alpha" aria-pressed="false">Alpha</button>
+		</div>
+	</main>
+	<script>
+		const rose = document.getElementById('rose');
+		const buttons = document.querySelectorAll('.buttons button');
+
+		buttons.forEach(button => button.addEventListener('click', () => {
+			rose.className = button.dataset.effect;
+			buttons.forEach(item => {
+				item.classList.remove('active');
+				item.setAttribute('aria-pressed', 'false');
+			});
+			button.classList.add('active');
+			button.setAttribute('aria-pressed', 'true');
+		}));
+	</script>
+</body>
+</html>

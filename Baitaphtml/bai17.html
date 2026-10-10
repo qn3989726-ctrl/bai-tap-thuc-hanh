@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đăng ký tài khoản</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; display: grid; place-items: center;
+      padding: 20px; background: #fff7ed; font-family: Arial, sans-serif;
+    }
+    form {
+      width: min(100%, 720px); background: #fff; border: 1px solid #fed7aa;
+      border-radius: 12px; padding: 22px 30px 18px;
+    }
+    h1 { margin: 0 0 6px; font-size: 28px; color: #c2410c; }
+    .sub { margin: 0 0 18px; color: #6b7280; }
+    .field { margin-bottom: 12px; }
+    .label-row {
+      display: flex; align-items: center; gap: 8px; margin: 0 0 6px;
+      font-weight: 600; color: #1f2937;
+    }
+    .status { opacity: 0; font-weight: 700; }
+    input {
+      width: 100%; height: 42px; padding: 0 12px; border: 1.5px solid #d1d5db;
+      border-radius: 8px; font: inherit; transition: .2s ease;
+    }
+    input:focus { border-color: #2563eb; outline: none; box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+    .field.valid input { border-color: #16a34a; }
+    .field.invalid input { border-color: #dc2626; }
+    .field.valid .status, .field.invalid .status { opacity: 1; }
+    .field.valid .status { color: #16a34a; }
+    .field.invalid .status { color: #dc2626; }
+    .hint {
+      display: block; min-height: 16px; margin-top: 6px; font-size: 13px; color: transparent;
+    }
+    .field.invalid .hint { color: #dc2626; }
+    .field.valid .hint { color: #16a34a; }
+    .success {
+      margin-top: 12px; min-height: 20px; font-weight: 700; color: #16a34a; opacity: 0;
+    }
+    .success.show { opacity: 1; }
+    button {
+      width: 100%; margin-top: 8px; height: 46px; border: 0; border-radius: 8px;
+      background: #c2410c; color: #fff; font: inherit; font-size: 18px; font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <form novalidate>
+    <header>
+      <h1>Đăng ký tài khoản</h1>
+      <p class="sub">Dữ liệu được kiểm tra bằng JavaScript trước khi gửi</p>
+    </header>
+
+    <section class="field" data-field="name">
+      <p class="label-row">
+        <label for="name">Họ và tên</label>
+        <span class="status"></span>
+      </p>
+      <input id="name" type="text">
+      <small class="hint"></small>
+    </section>
+
+    <section class="field" data-field="email">
+      <p class="label-row">
+        <label for="email">Email</label>
+        <span class="status"></span>
+      </p>
+      <input id="email" type="text">
+      <small class="hint"></small>
+    </section>
+
+    <section class="field" data-field="password">
+      <p class="label-row">
+        <label for="password">Mật khẩu</label>
+        <span class="status"></span>
+      </p>
+      <input id="password" type="password">
+      <small class="hint"></small>
+    </section>
+
+    <section class="field" data-field="confirm">
+      <p class="label-row">
+        <label for="confirm">Xác nhận mật khẩu</label>
+        <span class="status"></span>
+      </p>
+      <input id="confirm" type="password">
+      <small class="hint"></small>
+    </section>
+
+    <button type="submit">Đăng ký</button>
+    <p class="success" aria-live="polite"></p>
+  </form>
+
+  <script>
+    const rules = {
+      name: v => v.trim() !== '',
+      email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+      password: v => v.length >= 6,
+      confirm: v => v === document.getElementById('password').value && v.length >= 6
+    };
+
+    const messages = {
+      name: 'Họ tên không được để trống',
+      email: 'Email không hợp lệ',
+      password: 'Mật khẩu phải có ít nhất 6 ký tự',
+      confirm: 'Xác nhận mật khẩu không khớp'
+    };
+
+    function validateField(field) {
+      const input = document.getElementById(field);
+      const box = input.closest('.field');
+      const ok = rules[field](input.value);
+      box.classList.toggle('valid', ok);
+      box.classList.toggle('invalid', !ok);
+      box.querySelector('.status').textContent = ok ? '✓' : '✕';
+      const hint = field === 'email' && /^[^\s@]+@$/.test(input.value)
+        ? 'Email không hợp lệ (thiếu tên miền)' : messages[field];
+      box.querySelector('.hint').textContent = ok ? 'Hợp lệ' : hint;
+      return ok;
+    }
+
+    document.querySelector('form').addEventListener('submit', e => {
+      e.preventDefault();
+      const success = document.querySelector('.success');
+      let ok = true;
+      ['name', 'email', 'password', 'confirm'].forEach(key => { if (!validateField(key)) ok = false; });
+
+      if (ok) {
+        ['name', 'email', 'password', 'confirm'].forEach(id => document.getElementById(id).value = '');
+        document.querySelectorAll('.field').forEach(field => {
+          field.classList.remove('valid', 'invalid');
+          field.querySelector('.status').textContent = '';
+          field.querySelector('.hint').textContent = '';
+        });
+        success.textContent = 'Đăng ký thành công!';
+        success.classList.add('show');
+      } else {
+        success.textContent = '';
+        success.classList.remove('show');
+      }
+    });
+
+    document.querySelectorAll('input').forEach(input => {
+      input.addEventListener('input', () => {
+        const success = document.querySelector('.success');
+        if (success.classList.contains('show')) {
+          success.textContent = '';
+          success.classList.remove('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

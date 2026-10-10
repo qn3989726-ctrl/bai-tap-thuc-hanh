@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chương trình khuyến mãi Double Rich</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 28px 20px;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            font-size: 15px;
+            line-height: 1.55;
+            background: #e9edef;
+        }
+
+        main {
+            width: min(950px, 100%);
+            min-height: 635px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+        }
+
+        header {
+            text-align: center;
+        }
+
+        .title-bar {
+            margin: 0;
+            padding: 10px 12px 9px;
+            color: #ffffff;
+            background: #c8102e;
+            font-size: 24px;
+            line-height: 1.2;
+        }
+
+        .subtitle-bar {
+            margin: 0;
+            padding: 5px 12px;
+            color: #c8102e;
+            background: #fbe3e8;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .content-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin: 25px 25px 0;
+        }
+
+        .left-column {
+            min-height: 305px;
+            border-right: 1px solid #dddddd;
+        }
+
+        .right-column {
+            padding: 0 0 0 24px;
+        }
+
+        .product-image {
+            float: right;
+            width: 190px;
+            height: auto;
+            margin: 0 0 14px 18px;
+        }
+
+        h2 {
+            margin: 0 0 5px;
+            color: #c8102e;
+            font-size: 16px;
+            line-height: 1.35;
+        }
+
+        ul {
+            margin: 0 0 12px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+            line-height: 1.55;
+        }
+
+        .prize-method {
+            width: 50%;
+            padding: 17px 25px 0;
+        }
+
+        @media (max-width: 700px) {
+            body {
+                padding: 12px;
+            }
+
+            .title-bar {
+                font-size: 20px;
+            }
+
+            .content-columns {
+                grid-template-columns: 1fr;
+                margin: 18px 16px 0;
+            }
+
+            .left-column {
+                display: none;
+            }
+
+            .right-column {
+                padding-left: 0;
+            }
+
+            .prize-method {
+                width: auto;
+                padding: 18px 16px 25px;
+            }
+
+            .product-image {
+                width: 42%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <header>
+            <h1 class="title-bar">Công nghệ dầu gội dưỡng tóc mới</h1>
+            <p class="subtitle-bar">TỎA SÁNG CÙNG DOUBLE RICH</p>
+        </header>
+
+        <section class="content-columns">
+            <aside class="left-column" aria-hidden="true"></aside>
+
+            <section class="right-column">
+                <img class="product-image" src="../assets/images/DoubleRich.jpg" alt="Dầu gội Double Rich">
+
+                <article>
+                    <h2>&#9633; Sản phẩm khuyến mãi</h2>
+                    <ul>
+                        <li>Dầu gội Double Rich mới 200ml, 400ml có tem khuyến mãi.</li>
+                    </ul>
+                </article>
+
+                <article>
+                    <h2>&#9633; Đối tượng tham gia</h2>
+                    <ul>
+                        <li>Áp dụng cho tất cả người tiêu dùng cuối cùng mua sản phẩm khuyến mãi.</li>
+                        <li>Không áp dụng cho nhân viên, nhà phân phối, đại lý và các cá nhân kinh doanh sản phẩm của công ty.</li>
+                    </ul>
+                </article>
+            </section>
+        </section>
+
+        <section class="prize-method">
+            <h2>&#9633; Cách thức nhận giải</h2>
+            <ul>
+                <li><strong>Giải khuyến khích:</strong> đổi quà tại cửa hàng bán lẻ toàn quốc, từ 15/06/2005 đến 17h ngày 12/08/2005.</li>
+                <li><strong>Giải đặc biệt, nhất, nhì:</strong> cắt mã vạch trên chai dầu gội, gửi kèm phiếu trúng thưởng về văn phòng công ty trước ngày 31/07/2005 (theo dấu bưu điện).</li>
+            </ul>
+        </section>
+    </main>
+
+</body>
+</html>
+
+
+

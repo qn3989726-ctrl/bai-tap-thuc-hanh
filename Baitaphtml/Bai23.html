@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Thư viện ảnh - Hiệu ứng Hover</title>
+	<style>
+		* { box-sizing: border-box; }
+
+		body {
+			margin: 0;
+			padding: 32px 20px 40px;
+			background: #f7f9fb;
+			color: #111827;
+			font: 16px/1.5 Arial, sans-serif;
+		}
+
+		header { margin: 0 auto 28px; text-align: center; }
+		h1 { margin: 0 0 4px; font-size: 32px; }
+		header p { margin: 0; color: #64748b; }
+
+		main {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 16px;
+			max-width: 1400px;
+			margin: auto;
+		}
+
+		figure {
+			position: relative;
+			aspect-ratio: 1.65;
+			overflow: hidden;
+			margin: 0;
+			border-radius: 14px;
+			box-shadow: 0 10px 24px #0f172a26;
+		}
+
+		figure img {
+			display: block;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform .4s ease;
+		}
+
+		figcaption {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			padding: 48px 16px 12px;
+			background: linear-gradient(transparent, #000000c9);
+			color: #fff;
+			font-size: 17px;
+		}
+
+		figure:hover img { transform: scale(1.12); }
+
+		@media (max-width: 800px) {
+			main { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		}
+
+		@media (max-width: 520px) {
+			body { padding: 24px 16px; }
+			h1 { font-size: 26px; }
+			main { grid-template-columns: 1fr; gap: 14px; }
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Thư viện ảnh — Hiệu ứng Hover</h1>
+		<p>Rê chuột lên ảnh để thấy hiệu ứng phóng to (zoom) và lớp phủ chú thích.</p>
+	</header>
+
+	<main aria-label="Thư viện ảnh danh thắng Việt Nam">
+		<figure>
+			<img src="../assets/images/1-vinh-ha-long.jpg" alt="Bãi biển với hàng dừa tại Vịnh Hạ Long">
+			<figcaption>Vịnh Hạ Long</figcaption>
+		</figure>
+		<figure>
+			<img src="../assets/images/2-son-doong.jpg" alt="Hang động Sơn Đoòng">
+			<figcaption>Hang Sơn Đoòng</figcaption>
+		</figure>
+		<figure>
+			<img src="../assets/images/3-thac-ban-gioc.jpg" alt="Thác nước Bản Giốc">
+			<figcaption>Thác Bản Giốc</figcaption>
+		</figure>
+		<figure>
+			<img src="../assets/images/4-fansipan.jpg" alt="Núi Fansipan trên biển mây">
+			<figcaption>Fansipan</figcaption>
+		</figure>
+		<figure>
+			<img src="../assets/images/5-mekong.jpg" alt="Thuyền trên sông ở đồng bằng sông Cửu Long">
+			<figcaption>Đồng bằng sông Cửu Long</figcaption>
+		</figure>
+		<figure>
+			<img src="../assets/images/6-phong-nha.jpg" alt="Thạch nhũ trong động Phong Nha">
+			<figcaption>Động Phong Nha</figcaption>
+		</figure>
+	</main>
+</body>
+</html>

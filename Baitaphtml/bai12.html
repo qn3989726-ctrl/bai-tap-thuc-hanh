@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch của bạn</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 24px;
+            display: grid;
+            place-items: center;
+            background: url("../assets/images/Nen.gif") center / cover fixed, #f3f3f3;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        .calendar-card {
+            width: min(100%, 728px);
+            padding: 35px 34px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.14);
+        }
+
+        .date-display {
+            min-height: 231px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #d1d1d1;
+            border-radius: 13px;
+            text-align: center;
+        }
+
+        .year {
+            margin: 0 0 1px;
+            color: #c62828;
+            font-size: 20px;
+        }
+
+        .month, .weekday {
+            margin: 0;
+            color: #1565c0;
+            font-size: 30px;
+        }
+
+        .day-number {
+            margin: 9px 0 0;
+            color: #c62828;
+            font-family: Arial, sans-serif;
+            font-size: 64px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .greeting {
+            margin: 22px 0 24px;
+            color: #c62828;
+            font-size: 29px;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .date-form {
+            min-height: 125px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) 94px;
+            align-items: center;
+            gap: 24px;
+            padding: 18px 28px;
+            border: 3px solid #1565c0;
+            border-radius: 13px;
+        }
+
+        .field {
+            display: grid;
+            gap: 1px;
+            text-align: center;
+        }
+
+        .field label {
+            font-family: Arial, sans-serif;
+            font-size: 22px;
+        }
+
+        .field input {
+            width: 100%;
+            min-width: 0;
+            height: 43px;
+            padding: 4px 8px;
+            border: 1px solid #c8c8c8;
+            border-radius: 7px;
+            font: 20px Arial, sans-serif;
+            text-align: center;
+        }
+
+        .field input:focus-visible, .submit-button:focus-visible {
+            outline: 3px solid #90caf9;
+            outline-offset: 2px;
+        }
+
+        .submit-button {
+            min-height: 70px;
+            padding: 8px 12px;
+            border: 0;
+            border-radius: 7px;
+            background: #536f7c;
+            color: #fff;
+            cursor: pointer;
+            font: 20px Arial, sans-serif;
+        }
+
+        .submit-button:hover {
+            background: #405b67;
+        }
+
+        @media (max-width: 620px) {
+            body {
+                padding: 16px;
+            }
+
+            .calendar-card {
+                padding: 24px 18px;
+            }
+
+            .date-display {
+                min-height: 210px;
+            }
+
+            .date-form {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 14px 10px;
+                padding: 16px;
+            }
+
+            .field label {
+                font-size: 18px;
+            }
+
+            .submit-button {
+                grid-column: 1 / -1;
+                min-height: 48px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .calendar-card {
+                padding: 18px 14px;
+            }
+
+            .month, .weekday {
+                font-size: 26px;
+            }
+
+            .date-form {
+                gap: 12px 6px;
+                padding: 12px 8px;
+            }
+
+            .field input {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="calendar-card">
+        <section class="date-display" aria-live="polite" aria-label="Ngày đã chọn">
+            <h2 class="year" id="display-year">2026</h2>
+            <p class="month" id="display-month">Tháng 10</p>
+            <p class="day-number" id="display-day">24</p>
+            <p class="weekday" id="display-weekday">Thứ năm</p>
+        </section>
+
+        <p class="greeting" id="greeting" aria-live="polite">Chào buổi sáng!</p>
+
+        <form class="date-form" id="date-form">
+            <fieldset class="field">
+                <label for="day">Ngày</label>
+                <input id="day" name="day" type="number" min="1" max="31" required>
+            </fieldset>
+            <fieldset class="field">
+                <label for="month">Tháng</label>
+                <input id="month" name="month" type="number" min="1" max="12"  required>
+            </fieldset>
+            <fieldset class="field">
+                <label for="year">Năm</label>
+                <input id="year" name="year" type="number" min="1" max="9999" required>
+            </fieldset  >
+            <button class="submit-button" type="submit">In<br>lịch</button>
+        </form>
+    </main>
+
+    <script>
+        const dateForm = document.querySelector("#date-form");
+        const dayInput = document.querySelector("#day");
+        const monthInput = document.querySelector("#month");
+        const yearInput = document.querySelector("#year");
+        const weekdays = ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy"];
+        const months = ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12"];
+
+        function showCurrentDate() {
+            const currentDate = new Date();
+            const day = currentDate.getDate();
+            const month = currentDate.getMonth();
+            const year = currentDate.getFullYear();
+
+            dayInput.value = day;
+            monthInput.value = month + 1;
+            yearInput.value = year;
+            document.querySelector("#display-year").textContent = year;
+            document.querySelector("#display-month").textContent = months[month];
+            document.querySelector("#display-day").textContent = day;
+            document.querySelector("#display-weekday").textContent = weekdays[currentDate.getDay()];
+        }
+
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            let timeOfDay = "tối";
+
+            if (hour >= 5 && hour < 11) timeOfDay = "sáng";
+            else if (hour >= 11 && hour < 13) timeOfDay = "trưa";
+            else if (hour >= 13 && hour < 18) timeOfDay = "chiều";
+
+            document.querySelector("#greeting").textContent = `Chào buổi ${timeOfDay}!`;
+        }
+
+        dateForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (!dateForm.reportValidity()) return;
+
+            const day = Number(dayInput.value);
+            const month = Number(monthInput.value);
+            const year = Number(yearInput.value);
+            const selectedDate = new Date(0);
+            selectedDate.setFullYear(year, month - 1, day);
+
+            if (selectedDate.getFullYear() !== year || selectedDate.getMonth() !== month - 1 || selectedDate.getDate() !== day) {
+                dayInput.setCustomValidity("Ngày không hợp lệ trong tháng đã chọn.");
+                dayInput.reportValidity();
+                dayInput.setCustomValidity("");
+                return;
+            }
+
+            document.querySelector("#display-year").textContent = year;
+            document.querySelector("#display-month").textContent = months[selectedDate.getMonth()];
+            document.querySelector("#display-day").textContent = day;
+            document.querySelector("#display-weekday").textContent = weekdays[selectedDate.getDay()];
+        });
+
+        showCurrentDate();
+        updateGreeting();
+    </script>
+</body>
+</html>

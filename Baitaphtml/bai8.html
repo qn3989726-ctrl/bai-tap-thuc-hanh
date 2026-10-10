@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ai? Cái gì? Ở đâu? ...</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.45;
+            color: #222;
+            background: #edf2f5;
+            padding: 15px;
+        }
+        a {
+            text-decoration: none;
+            color: #1668C1;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        header {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 8px 18px 7px;
+            background: #ffffff;
+            border-bottom: 2px solid #1668C1;
+        }
+        header h1 {
+            color: #1668C1;
+            font-size: 22px;
+        }
+        .container {
+            display: flex;
+            max-width: 1000px;
+            margin: 0 auto;
+            gap: 0;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(29, 61, 83, 0.12);
+        }
+        .sidebar {
+            flex: 0 0 195px;
+            padding: 12px 15px 30px;
+            border-right: 1px solid #dfe7ed;
+            background: #f8fbfd;
+        }
+        .sidebar h2 {
+            font-size: 12px;
+            color: #777;
+            text-transform: uppercase;
+            margin-bottom: 9px;
+            font-size: 10px;
+            letter-spacing: 0.5px;
+        }
+        .sidebar nav ul {
+            list-style: none;
+        }
+        .sidebar nav ul li {
+            margin-bottom: 5px;
+        }
+        .sidebar nav ul li a {
+            font-size: 13px;
+        }
+        .content {
+            flex: 1;
+            min-width: 0;
+            padding: 15px 18px 22px;
+        }
+        .category-section {
+            border-bottom: 1px dotted #d4dce2;
+            padding-bottom: 13px;
+            margin-bottom: 14px;
+        }
+        .category-section:last-child {
+            border-bottom: none;
+        }
+        .category-title {
+            background-color: #1668C1;
+            color: #FFFFFF;
+            padding: 5px 10px;
+            font-size: 16px;
+            border-radius: 2px;
+            margin-bottom: 12px;
+        }
+        .article {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 14px;
+            gap: 15px;
+        }
+        .article-body {
+            flex: 1;
+        }
+        .article-title {
+            color: #1668C1;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        .article-summary {
+            font-size: 12px;
+            color: #222;
+        }
+        .article-img {
+            flex: 0 0 130px;
+            width: 130px;
+            height: 82px;
+            object-fit: cover;
+            border-radius: 3px;
+            border: 1px solid #eee;
+        }
+
+        footer {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 9px;
+            color: #888888;
+            background: #ffffff;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        @media (max-width: 650px) {
+            body {
+                padding: 8px;
+            }
+
+            .container {
+                display: block;
+            }
+
+            .sidebar {
+                border-right: 0;
+                border-bottom: 1px solid #dfe7ed;
+            }
+
+            .sidebar nav ul {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 4px 14px;
+            }
+
+            .content {
+                padding: 12px;
+            }
+
+            .article-img {
+                flex-basis: 100px;
+                width: 100px;
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ai? Cái gì? Ở đâu? ...</h1>
+    </header>
+
+    <main class="container">
+        
+        <aside class="sidebar">
+            <h2>Chuyên mục</h2>
+            <nav>
+                <ul>
+                    <li><a href="#tinh-yeu">Tình yêu và gia đình</a></li>
+                    <li><a href="#suc-khoe">Sức khỏe</a></li>
+                    <li><a href="#am-thuc">Ẩm thực</a></li>
+                    <li><a href="#am-nhac">Âm nhạc</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <section class="content">
+
+            <section id="tinh-yeu" class="category-section">
+                <h2 class="category-title">Tình yêu và gia đình</h2>
+                
+                <article class="article">
+                    <section class="article-body">
+                        <h3 class="article-title">Trầu cau</h3>
+                        <p class="article-summary">Tình yêu là gì? Là ta yêu một người mỗi ngày trong một năm. Mỗi năm trong một đời người...</p>
+                    </section>
+                    <img src="../assets/images/traucau.jpg" alt="Trầu cau" class="article-img">
+                </article>
+
+                <article class="article">
+                    <section class="article-body">
+                        <h3 class="article-title">Xây dựng hạnh phúc gia đình qua những bữa cơm hàng ngày</h3>
+                        <p class="article-summary">Nói đến hạnh phúc gia đình chúng ta thường mô tả bằng những từ thật đẹp đẽ và được thể hiện qua những giá trị đạo đức đáng trân trọng...</p>
+                    </section>
+                    <img src="../assets/images/comtrua.jpg" alt="Cơm trưa" class="article-img">
+                </article>
+            </section>
+
+            <section id="suc-khoe" class="category-section">
+                <h2 class="category-title">Sức khỏe</h2>
+                
+                <article class="article">
+                    <section class="article-body">
+                        <h3 class="article-title">10 lời khuyên trong dinh dưỡng</h3>
+                        <p class="article-summary">Cơ thể chúng ta cần nhiều chất dinh dưỡng từ nhiều nguồn lương thực khác nhau...</p>
+                    </section>
+                    <img src="../assets/images/Suc_khoe_03.jpg" alt="Dinh dưỡng" class="article-img">
+                </article>
+
+                <article class="article">
+                    <section class="article-body">
+                        <h3 class="article-title">Làm sao để bỏ thuốc lá?</h3>
+                        <p class="article-summary">Sức khoẻ của chính bạn. Không hút thuốc là tức là giảm thiểu đáng kể rủi ro mắc các loại bệnh ung thư...</p>
+                    </section>
+                    <img src="../assets/images/nosmoke.jpg" alt="Bỏ thuốc lá" class="article-img">
+                </article>
+            </section>
+
+            <section id="am-thuc" class="category-section">
+                <h2 class="category-title">Ẩm thực</h2>
+                
+                <article class="article">
+                    <section class="article-body">
+                        <h3 class="article-title">Các món ăn dân dã</h3>
+                        <p class="article-summary">Các món ăn mới trong tuần - Chuyên mục dạy nấu ăn - Món ngon Hà Nội - Các món ăn dân dã ở miền Tây.</p>
+                    </section>
+                    <img src="../assets/images/Am_thuc.jpg" alt="Ẩm thực" class="article-img">
+                </article>
+            </section>
+
+            <section id="am-nhac" class="category-section">
+                <h2 class="category-title">Âm nhạc</h2>
+                
+                <article class="article">
+                    <section class="article-body">
+                        <h3 class="article-title">Nhạc thiếu nhi</h3>
+                        <p class="article-summary">Nắng sân trường - Mẹ yêu không nào - Ba bà đi bán lợn con.</p>
+                    </section>
+                    <img src="../assets/images/nhac_thieu_nhi.jpg" alt="Nhạc thiếu nhi" class="article-img">
+                </article>
+
+                <article class="article">
+                    <section class="article-body">
+                        <h3 class="article-title">Dân ca</h3>
+                        <p class="article-summary">Bèo dạt mây trôi - Mười thương - Lý cây bông.</p>
+                    </section>
+                    <img src="../assets/images/Nhac_dan_ca.jpg" alt="Dân ca" class="article-img">
+                </article>
+            </section>
+
+        </section>
+    </main>
+
+    <footer>© CSE.TLU - ChimCanhCut - 0868600513</footer>
+
+</body>
+</html>
+

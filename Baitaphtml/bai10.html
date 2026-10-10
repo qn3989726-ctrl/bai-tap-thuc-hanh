@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên hệ với chúng tôi</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f5f9;
+            margin: 0;
+            padding: 32px 16px 16px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+
+
+        form {
+            width: 100%;
+            max-width: 760px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            overflow: hidden;
+        }
+
+        header {
+            background: #0f766e;
+            color: #ffffff;
+            padding: 24px 28px;
+        }
+
+        header h1 {
+            font-size: 24px;
+            margin: 0 0 6px;
+        }
+
+        header p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .form-section {
+            display: grid;
+            gap: 24px;
+            padding: 24px 28px 28px;
+        }
+
+        .form-fields {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 0;
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+            margin: 0;
+            min-width: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #334155;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background: #ffffff;
+            color: #1e293b;
+            font: inherit;
+            font-size: 14px;
+        }
+
+        .form-fields fieldset:first-child input {
+            position: relative;
+            z-index: 0;
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .form-fields fieldset:last-child input,
+        .form-fields fieldset:last-child select {
+            position: relative;
+            z-index: 1;
+            width: calc(100% + 4px);
+            margin-left: -4px;
+            border-radius: 6px;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: 2px solid rgba(15, 118, 110, 0.2);
+            outline-offset: 1px;
+            border-color: #0f766e;
+        }
+
+        .message-field textarea {
+            display: block;
+            resize: vertical;
+        }
+
+        .check-box {
+            display: grid;
+            grid-template-columns: 72% minmax(0, 1fr);
+            align-items: center;
+            gap: 0;
+            color: #334155;
+        }
+
+        .check-box label {
+            max-width: 180px;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        input[type="checkbox"] {
+            justify-self: center;
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            accent-color: #0f766e;
+        }
+
+        .form-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: 0;
+            border-radius: 6px;
+            font: inherit;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button[type="submit"] {
+            color: #ffffff;
+            background: #0f766e;
+        }
+
+        button[type="submit"]:hover {
+            background: #0c5f58;
+        }
+
+        button[type="reset"] {
+            color: #334155;
+            background: #e2e8f0;
+        }
+
+        button[type="reset"]:hover {
+            background: #cbd5e1;
+        }
+
+        button:focus-visible {
+            outline: 3px solid rgba(15, 118, 110, 0.4);
+            outline-offset: 2px;
+        }
+
+        @media (max-width: 560px) {
+            body {
+                align-items: flex-start;
+                padding: 12px;
+            }
+
+            header {
+                padding: 20px;
+            }
+
+            header h1 {
+                font-size: 22px;
+            }
+
+            .form-section {
+                gap: 16px;
+                padding: 20px;
+            }
+
+            .form-fields {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 14px;
+            }
+
+            .form-fields fieldset:first-child input,
+            .form-fields fieldset:last-child input,
+            .form-fields fieldset:last-child select {
+                width: 100%;
+                margin-left: 0;
+                border-radius: 6px;
+            }
+
+            .check-box {
+                grid-template-columns: 28px minmax(0, 1fr);
+                gap: 10px;
+            }
+
+            input[type="checkbox"] {
+                justify-self: start;
+            }
+
+            .form-actions button {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <form>
+        <header>
+            <h1>Liên hệ với chúng tôi</h1>
+            <p>Vui lòng điền thông tin bên dưới, chúng tôi sẽ phản hồi trong 24 giờ.</p>
+        </header>
+        <section class="form-section">
+            <section class="form-fields">
+                <fieldset>
+                    <label for="name">Họ và tên</label>
+                    <input type="text" id="name" name="name"  required>
+                </fieldset>
+                <fieldset>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email"  required>
+                </fieldset>
+            </section>
+            <section class="form-fields">
+                <fieldset>
+                    <label for="phone">Số điện thoại</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </fieldset>
+                <fieldset>
+                    <label for="subject">Chủ đề</label>
+                    <select id="subject" name="subject" required>
+                        <option value="course">Hỏi về khoá học</option>
+                        
+                    </select>
+                </fieldset>
+            </section>
+            <section class="message-field">
+                <label for="message">Nội dung</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+            </section>
+            <section class="check-box">
+                <input type="checkbox" id="agree" name="agree">
+                <label for="agree">Tôi đồng ý nhận email phản hồi.</label>
+            </section>
+            <section class="form-actions">
+                <button type="submit">Gửi liên hệ</button>
+                <button type="reset">Nhập lại</button>
+            </section>
+        </section>
+    </form>
+
+</body>
+</html>
